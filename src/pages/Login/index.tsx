@@ -16,6 +16,8 @@ import {useHistory} from "react-router";
 import {navigate} from "ionicons/icons";
 import style from './style.module.css';
 import {Alert} from "../../components/Alert";
+import {FcGoogle} from "react-icons/fc";
+import {AiFillApple} from "react-icons/ai";
 
 export const Login = () => {
     const [, setToken] = useToken();
@@ -34,22 +36,18 @@ export const Login = () => {
     }
 
     const onSubmit = async () => {
-        if(emailValue && passwordValue || (emailValue.length !== 0 && passwordValue.length))
-        {
+        if (emailValue && passwordValue || (emailValue.length !== 0 && passwordValue.length)) {
             const response = await axios.post('http://localhost:8080/api/login', {
                 email: emailValue,
                 password: passwordValue,
             }).catch(error => setLoginAlert(true));
             const {token} = response?.data;
-            if(response?.data)
-            {
+            if (response?.data) {
                 setToken(token)
                 window.location.reload();
                 history.push('/uno');
-            }
-            else setLoginAlert(true)
-        }
-        else setLoginAlert(true)
+            } else setLoginAlert(true)
+        } else setLoginAlert(true)
     }
 
     return (
@@ -58,7 +56,10 @@ export const Login = () => {
                 <div className={style.login_page_container}>
                     <form className="ion-padding">
                         <div className={style.login_bottom}>
-                            <IonImg className={style.image_logo} src={'/assets/logo.png'} />
+                            <IonImg className={style.image_logo} src={'/assets/react-ioni.png'}/>
+                        </div>
+                        <div className={style.login_header}>
+                            Login
                         </div>
                         <IonItem className={style.login_input}>
                             <IonLabel position="floating">Email</IonLabel>
@@ -69,16 +70,20 @@ export const Login = () => {
                             <IonInput onIonChange={(e: any) => passwordHandler(e.target.value)} value={passwordValue}
                                       type="password"/>
                         </IonItem>
-                        <IonButton onClick={() => onSubmit()} className={style.login_button} expand="block">
-                            Login
-                        </IonButton>
+                        <div className={style.oath}>
+                            <IonButton onClick={() => onSubmit()} className={style.login_button} expand="block">
+                                Login
+                            </IonButton>
+                            <FcGoogle className={style.oath_elem}/>
+                        </div>
                         <div className={style.login_bottom}>
                             <span>Non hai ancora un account?</span>
                             <IonRouterLink href={'/register'}>Registrati</IonRouterLink>
                         </div>
                     </form>
                 </div>
-                <Alert showAlert={loginAlert} setShowAlert={setLoginAlert} header={'Credenziali non valide'} subHeader={''} message={'Inseriscile nuovamente'} buttons={['Ok']}/>
+                <Alert showAlert={loginAlert} setShowAlert={setLoginAlert} header={'Credenziali non valide'}
+                       subHeader={''} message={'Inseriscile nuovamente'} buttons={['Ok']}/>
             </IonContent>
         </IonPage>
     )

@@ -60,7 +60,7 @@ export const Register = () => {
         }
         else {
             setRegisterMessages({
-                header : 'Credenziali Non Valide',
+                header : 'Credenziali non valide',
                 message : 'Riprova'
             })
             setRegisterAlert(true)
@@ -73,7 +73,10 @@ export const Register = () => {
                 <div className={style.login_page_container}>
                     <form className="ion-padding">
                         <div className={style.login_bottom}>
-                            <IonImg className={style.image_logo} src={'/assets/logo.png'} />
+                            <IonImg className={style.image_logo} src={'/assets/react-ioni.png'} />
+                        </div>
+                        <div className={style.login_header}>
+                            Register
                         </div>
                         <IonItem className={style.login_input}>
                             <IonLabel position="floating">Email</IonLabel>
