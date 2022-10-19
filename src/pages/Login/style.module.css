@@ -1,0 +1,37 @@
+.login_page_container{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_button {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.login_input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.login_top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.image_logo{
+    max-width: 120px;
+}
